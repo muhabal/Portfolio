@@ -4,51 +4,240 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.0/dist/cdn.min.js"></script>
   <title>Document</title>
-  <link href="https://fonts.googleapis.com/css2?family=SUSE+Mono:ital,wght@0,100..800;1,100..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css2?display=swap" rel="stylesheet"> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=SUSE+Mono:ital,wght@0,100..800;1,100..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-  <style>
+  <style type="text/tailwindcss">
     *{
+      box-sizing: border-box;
+    }
+
+    body{
       font-family: "SUSE Mono", sans-serif;
+      /* margin: 0;
+      padding: 0; */
     }
 
     h2{
       font-size: 1.2rem;
       font-weight: 500;
     }
+
+    .font1{
+      font-family: Montserrat, Helvetica, Roboto;
+      font-weight: 600;
+      font-size: 4rem;
+    }
+
+    .project, .stack{
+      font-family: Montserrat;
+    }
+
+    .stack>div{
+      @apply shadow-md font-bold bg-gray-100 px-4 py-2 rounded-2xl flex gap-3 outline outline-gray-200 select-none duration-200
+    }
+
+    .stack>div:hover{
+      @apply px-6 shadow-none
+    }
+
+
+    .font2{
+      font-weight: 600;
+      font-size: 5rem;
+      font-family: Poppins;
+      text-wrap: nowrap;
+    }
+
+    .font2::after{
+      content: "About Me";
+      position: absolute;
+      inset: 0 0 0 0;
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke-color: rgb(161, 159, 159);
+      z-index: 2;
+    }
+
+    @media(max-width:47rem){
+      .font1{
+        font-size: 2rem;
+      }
+
+      .font2{
+        font-size: 4rem;
+      }
+    }
+
   </style>
 
 </head>
-<body class="m-8 flex justify-center flex-col">
-  <header class="sticky flex justify-between mx-8 items-center">
+<body class="mt-2 mx-2 md:mt-8 md:mx-8 flex justify-center flex-col relative mb-0">
+  <header x-data="{ mobilenavOpen:false }" class="sticky flex justify-between mx-8 items-center z-5">
     <div>
-      <h2>👋Hi, Yusoof</h2>
+      <h2>👋Hello there</h2>
     </div>
-    <nav class="grid gap-5 grid-cols-3">
-      <a class="flex justify-center p-4 hover:bg-gray-300 rounded-md" href="">About</a>
-      <a class="flex justify-center p-4 hover:bg-gray-300 rounded-md" href="">Projects</a>
-      <a class="flex justify-center p-4 hover:bg-gray-300 rounded-md" href="">Contact</a>
+    <nav x-show="mobilenavOpen" class="md:!block absolute md:relative">
+      <ul class="flex items-center md:flex-row flex-col justify-center translate-y-32 translate-x-55 md:translate-x-0 md:translate-y-0 bg-gray-200 md:bg-inherit p-4 md:p-0 rounded-md">
+        <li><a class="flex justify-center p-4 hover:bg-gray-300 rounded-md" href="#about">About</a></li>
+        <li><a class="flex justify-center p-4 hover:bg-gray-300 rounded-md" href="#project">Projects</a></li>
+        <li><a class="flex justify-center p-4 hover:bg-gray-300 rounded-md" href="#contact">Contact</a></li>
+      </ul> 
     </nav>
+
     <div class="flex gap-3">
-      <a href="">
+      <a href="https://www.linkedin.com/in/muhabduli/">
         <figure>
-          <img class="h-8 w-8" src="https://img.icons8.com/ios-filled/50/1A1A1A/linkedin-circled--v1.png" alt="linkedin-circled--v1"/>
+          <img class="h-8 w-8" src="https://img.icons8.com/ios-filled/50/1A1A1A/linkedin-circled--v1.png" alt="linkedin"/>
         </figure>
       </a>
-      <a href="">
+      <a href="https://github.com/muhabal">
         <figure>
           <img class="h-8 w-8" src="https://img.icons8.com/glyph-neue/64/1A1A1A/github.png" alt="github"/>
         </figure>
       </a>
     </div>
+    <mobileicon class="md:hidden">
+      <a @click="mobilenavOpen = !mobilenavOpen" class="h-12 w-12 flex items-center justify-center cursor-pointer hover:bg-gray-200 rounded-lg">
+        <img x-show="!mobilenavOpen" class="w-6 h-6 select-none" src="https://img.icons8.com/small/64/000000/menu.png" alt="">
+        <img x-show="mobilenavOpen" class="w-6 h-6 select-none" src="https://img.icons8.com/small/64/000000/delete-sign.png" alt="">
+      </a>
+    </mobileicon>
   </header>
-  <hero class="grid grid-cols-2 mt-8 mx-12 ">
-    <div class="flex justify-center bg-gray-700">
-      left side
+  <hero class="md:grid grid-cols-2 mt-8 mx-16 ">
+    <div>
+      <div class="relative">
+        <h2 class="">Muhammed Abdullahi Bako--</h2>
+        <div class="absolute -top-8 left-20 z-[-1]" >
+          <figure>
+            <img class="w-20 h-20 rounded-full" src="../images/portrait.jpg" alt="">
+          </figure>
+        </div>
+      </div>     
+      <div class="font1 mt-10 md:mt-auto"> 
+        Engineer from FCT Nigeria
+      </div> 
+      <div class="mt-5">
+        <span class="text-gray-500 text-md">A tireless developer that works against the clock to squeeze as much learning into a day,</span>
+      </div>
+      <div class="mt-10">
+        <a href="" class="text-white bg-blue-500 font-bold text-sm py-3 px-5">
+          VIEW RESUME
+        </a>        
+      </div>
+
+
     </div>
-    <div class="flex justify-center bg-gray-500">
-      right side
+
+    <div class="hidden md:flex justify-center">
+      <figure>
+        <img class="h-90" src="../images/3772680.jpg" alt="">
+      </figure>
     </div>
   </hero>
+  <content class="mt-40 mx-16">
+    <about class="grid grid-cols-1 md:grid-cols-3 gap-10" id="about">
+      <div class="text-sm md:col-span-2 row-start-2 md:row-start-1 z-3">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt tempore hic voluptate beatae ipsa ratione quo debitis vero odit suscipit corrupti officia blanditiis porro, aliquid perspiciatis nostrum asperiores quae laborum?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, ipsum deleniti. Nihil laborum dolorem totam iusto incidunt fugit amet sit, ullam facilis est eveniet cum quaerat, officiis, ipsa ad natus?
+      </div>
+      <div class="relative flex justify-center">
+        <figure class="figureova absolute -top-8 md:-left-50 w-[100%] md:w-150 h-[100%] md:h-80 outline outline-gray-300 z-[2]">
+        </figure>
+        <h1 class="-top-26 md:-top-30 font2 absolute">About Me</h1>
+        <img class="w-[90%] md:w-80 -translate-y-13" src="../images/portrait.jpg" alt="">
+      </div>      
+    </about>
+
+    <project id="project" class="mt-15">
+      <h1 class="mt-10 project text-4xl font-bold">Projects</h1>
+      <p class="mt-4 font-medium">Some things that I have worked on</p>
+      <div class="grid md:mx-8 md:flex mt-5 gap-5 md:[&>div]:max-w-[50%]">
+        <div class="outline outline-gray-300 p-4 rounded-lg">
+          <div class="flex justify-between">
+            <a href=""><h3 class="font-bold">TheJuiceTrybe Admin</h3></a>
+            <a href="https://github.com/muhabal/TheJuiceTrybe">
+              <figure>
+                <img class="h-6 w-6" src="https://img.icons8.com/glyph-neue/64/1A1A1A/github.png" alt="github"/>
+              </figure>
+            </a>
+          </div>
+          <div class="text-sm">
+            This is an admin console for business management and recording with an invoice generator
+          </div>
+          <div class="flex gap-3 mt-6 [&>*]:outline [&>*]:outline-gray-500 [&>*]:p-2 [&>*]:rounded-md [&>*]:text-sm">
+            <span>Django</span>
+            <span>Javascript</span>
+            <span>Html</span>
+            <span>Css</span>
+          </div>
+        </div>
+        <div class="outline outline-gray-300 p-4 rounded-lg">
+          <div class="flex justify-between">
+            <a href=""><h3 class="font-bold">TheJuiceTrybe Store</h3></a>
+            <a href="https://github.com/muhabal/TheJuiceTrybe-Client">
+              <figure>
+                <img class="h-6 w-6" src="https://img.icons8.com/glyph-neue/64/1A1A1A/github.png" alt="github"/>
+              </figure>
+            </a>
+          </div>
+          <div class="text-sm">
+            This is an ecommerce site for a beverage production company
+          </div>
+          <div class="flex gap-3 mt-6 [&>*]:outline [&>*]:outline-gray-500 [&>*]:p-2 [&>*]:rounded-md [&>*]:text-sm">
+            <span>Django</span>
+            <span>Javascript</span>
+            <span>Html</span>
+            <span>tailwindcss</span>
+          </div>
+        </div>
+      </div>
+    </project>
+
+    <stack class="stack flex-wrap flex gap-3 mt-10 [&>div:hover]:cursor-pointer" id="">
+      <div>
+        <img class="w-6 h-6" src="https://img.icons8.com/material-sharp/24/django.png" alt="django"/>
+        <span>Django</span>
+      </div>
+      <div>
+        <img class="w-6 h-6" src="../images/brand+alpine+js-1330572002856282060_256px-removebg-preview.png" alt="">
+        <span>Alpinejs</span>
+      </div>
+      <div>
+        <img class="w-6 h-6" src="../images/tailwind-css-svgrepo-com (1).png" alt="">
+        <span>Tailwindcss</span>
+      </div>
+      <div>
+        <img class="w-6 h-6" src="https://img.icons8.com/ios-filled/250/html-5--v2.png" alt="html-5--v2"/>
+        <span>Html</span>
+      </div>
+    </stack>
+
+    <contact class="flex flex-col mb-15 items-center translate-x-5 md:translate-x-0" id="contact">
+      <h1 class="mt-15 project text-3xl md:text-5xl font-bold">GET IN TOUCH</h1>
+      <div class="mt-5 w-fit [&>div]:p-4 flex [&>div]:flex md:[&>div]:px-8 [&>div]:flex-col md:[&>div>*>img]:w-15 md:[&>div>*>img]:h-15">
+        <div class="bg-gray-200">
+          <a href="mailto:muhabalbako@gmail.com?"><img src="https://img.icons8.com/windows/64/telegram-app.png" alt="Email"></a>
+        </div>
+        <div class="">
+          <a href="https://github.com/muhabal"><img src="https://img.icons8.com/glyph-neue/64/1A1A1A/github.png" alt="github"></a>
+        </div>
+        <div class="bg-cyan-100">
+          <a href="https://www.linkedin.com/in/muhabduli/"><img class="" src="https://img.icons8.com/small/64/linkedin.png" alt="linkedin"></a>
+        </div>
+        <div class="bg-purple-200">
+          <a href=""><img src="https://img.icons8.com/small/64/discord--v1.png" alt=""></a>
+        </div>
+      </div>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d985.0770509427749!2d7.494419669526032!3d9.035624423902354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0b8e2b1a0e57%3A0x899bf58d94403407!2sPlot%201079%20Gwandu%2C%20Garki%2C%20Abuja%20900103%2C%20Federal%20Capital%20Territory!5e0!3m2!1sen!2sng!4v1765888441368!5m2!1sen!2sng" class="w-100 mt-10 rounded-2xl" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </contact>
+  </content>
+  <footer class="px-12 bg-gray-200 absolute bottom-0 w-full">
+    <span class="text-sm">&copy;muhabal 2025</span>
+  </footer>
 </body>
 </html>
