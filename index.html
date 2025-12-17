@@ -78,7 +78,7 @@
 
 </head>
 <body class="mt-2 mx-2 md:mt-8 md:mx-8 flex justify-center flex-col relative mb-0">
-  <header x-data="{ mobilenavOpen:false }" class="sticky flex justify-between mx-8 items-center z-5">
+  <header x-data="{ mobilenavOpen:false }" class="sticky flex justify-between mx-4 md:mx-8 items-center z-5">
     <div>
       <h2>👋Hello there</h2>
     </div>
@@ -109,7 +109,7 @@
       </a>
     </mobileicon>
   </header>
-  <hero class="md:grid grid-cols-2 mt-8 mx-16 ">
+  <hero class="md:grid grid-cols-2 mt-8 mx-8 md:mx-16 ">
     <div>
       <div class="relative">
         <h2 class="">Muhammed Abdullahi Bako--</h2>
@@ -140,7 +140,7 @@
       </figure>
     </div>
   </hero>
-  <content class="mt-40 mx-16">
+  <content class="mt-40 mx-8 md:mx-16">
     <about class="grid grid-cols-1 md:grid-cols-3 gap-10" id="about">
       <div class="text-sm md:col-span-2 row-start-2 md:row-start-1 z-3">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt tempore hic voluptate beatae ipsa ratione quo debitis vero odit suscipit corrupti officia blanditiis porro, aliquid perspiciatis nostrum asperiores quae laborum?
@@ -157,7 +157,7 @@
     <project id="project" class="mt-15">
       <h1 class="mt-10 project text-4xl font-bold">Projects</h1>
       <p class="mt-4 font-medium">Some things that I have worked on</p>
-      <div class="grid md:mx-8 md:flex mt-5 gap-5 md:[&>div]:max-w-[50%]">
+      <div class="flex flex-col md:mx-8 md:flex-row mt-5 gap-5 md:[&>div]:max-w-[50%]">
         <div class="outline outline-gray-300 p-4 rounded-lg">
           <div class="flex justify-between">
             <a href=""><h3 class="font-bold">TheJuiceTrybe Admin</h3></a>
@@ -170,7 +170,7 @@
           <div class="text-sm">
             This is an admin console for business management and recording with an invoice generator
           </div>
-          <div class="flex gap-3 mt-6 [&>*]:outline [&>*]:outline-gray-500 [&>*]:p-2 [&>*]:rounded-md [&>*]:text-sm">
+          <div class="flex flex-wrap gap-3 mt-6 [&>*]:outline [&>*]:outline-gray-500 [&>*]:p-2 [&>*]:rounded-md [&>*]:text-xs md:[&>*]:text-sm">
             <span>Django</span>
             <span>Javascript</span>
             <span>Html</span>
@@ -189,7 +189,7 @@
           <div class="text-sm">
             This is an ecommerce site for a beverage production company
           </div>
-          <div class="flex gap-3 mt-6 [&>*]:outline [&>*]:outline-gray-500 [&>*]:p-2 [&>*]:rounded-md [&>*]:text-sm">
+          <div class="flex flex-wrap gap-3 mt-6 [&>*]:outline [&>*]:outline-gray-500 [&>*]:p-2 [&>*]:rounded-md [&>*]:text-xs md:[&>*]:text-sm">
             <span>Django</span>
             <span>Javascript</span>
             <span>Html</span>
@@ -218,7 +218,7 @@
       </div>
     </stack>
 
-    <contact class="flex flex-col mb-15 items-center translate-x-5 md:translate-x-0" id="contact">
+    <contact class="flex flex-col mb-15 items-center" id="contact">
       <h1 class="mt-15 project text-3xl md:text-5xl font-bold">GET IN TOUCH</h1>
       <div class="mt-5 w-fit [&>div]:p-4 flex [&>div]:flex md:[&>div]:px-8 [&>div]:flex-col md:[&>div>*>img]:w-15 md:[&>div>*>img]:h-15">
         <div class="bg-gray-200">
@@ -234,10 +234,10 @@
           <a href=""><img src="https://img.icons8.com/small/64/discord--v1.png" alt=""></a>
         </div>
       </div>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d985.0770509427749!2d7.494419669526032!3d9.035624423902354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0b8e2b1a0e57%3A0x899bf58d94403407!2sPlot%201079%20Gwandu%2C%20Garki%2C%20Abuja%20900103%2C%20Federal%20Capital%20Territory!5e0!3m2!1sen!2sng!4v1765888441368!5m2!1sen!2sng" class="w-100 mt-10 rounded-2xl" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d985.0770509427749!2d7.494419669526032!3d9.035624423902354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0b8e2b1a0e57%3A0x899bf58d94403407!2sPlot%201079%20Gwandu%2C%20Garki%2C%20Abuja%20900103%2C%20Federal%20Capital%20Territory!5e0!3m2!1sen!2sng!4v1765888441368!5m2!1sen!2sng" class="w-[100%] md:w-100 mt-10 rounded-2xl" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </contact>
   </content>
-  <footer class="px-12 bg-gray-200 absolute bottom-0 w-full">
+  <footer class="px-12 bg-gray-200 absolute bottom-0 w-screen">
     <span class="text-sm">&copy;muhabal 2025</span>
   </footer>
 </body>
