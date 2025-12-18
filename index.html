@@ -64,6 +64,37 @@
       z-index: 2;
     }
 
+    .gallery{
+      width:900px;
+      display: flex;
+      overflow-x: scroll;
+    }
+
+    .gallery div{
+      width: 100%;
+      display: grid;
+      grid-template-columns: auto auto auto;
+      grid-gap: 20px;
+      padding: 10px;
+      flex: none;
+      align-items: center;
+    }
+
+    .gallery div img{
+      width: 100%;
+      border: solid 1px;
+      transition: transform .5s;
+    }
+
+    .gallery::-webkit-scrollbar{
+      display: none;
+    }
+
+    .gallery div img:hover{
+      cursor: pointer;
+      transform: scale(1.1)
+    }
+
     @media(max-width:47rem){
       .font1{
         font-size: 2rem;
@@ -120,10 +151,10 @@
         </div>
       </div>     
       <div class="font1 mt-10 md:mt-auto"> 
-        Engineer from FCT Nigeria
+        Backend Developer & Electrical Engineer from FCT Nigeria
       </div> 
       <div class="mt-5">
-        <span class="text-gray-500 text-md">A tireless developer that works against the clock to squeeze as much learning into a day,</span>
+        <span class="text-gray-500 text-md">Building reliable systems across harware and web</span>
       </div>
       <div class="mt-10">
         <a href="" class="text-white bg-blue-500 font-bold text-sm py-3 px-5">
@@ -143,8 +174,8 @@
   <content class="mt-40 mx-8 md:mx-16">
     <about class="grid grid-cols-1 md:grid-cols-3 gap-10" id="about">
       <div class="text-sm md:col-span-2 row-start-2 md:row-start-1 z-3">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt tempore hic voluptate beatae ipsa ratione quo debitis vero odit suscipit corrupti officia blanditiis porro, aliquid perspiciatis nostrum asperiores quae laborum?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, ipsum deleniti. Nihil laborum dolorem totam iusto incidunt fugit amet sit, ullam facilis est eveniet cum quaerat, officiis, ipsa ad natus?
+        I'm a self thought backend developer with 3 years of experience creating web applications using the django web framework, APIs and modern web technologies. I also create residential and commercial power distribution layouts with the use of CAD applications such as AutoCAD.<br>
+        <span class="font-medium">From electrical layouts to backend systems, I build reliable, production-ready solutions.</span>
       </div>
       <div class="relative flex justify-center">
         <figure class="figureova absolute -top-8 md:-left-50 w-[100%] md:w-150 h-[100%] md:h-80 outline outline-gray-300 z-[2]">
@@ -156,7 +187,8 @@
 
     <project id="project" class="mt-15">
       <h1 class="mt-10 project text-4xl font-bold">Projects</h1>
-      <p class="mt-4 font-medium">Some things that I have worked on</p>
+      <h2 class="mt-4 text-lg font-medium">Some things that I have worked on</h2>
+      <h3 class="mt-4 font-bold">Web & Software Projects</h3>
       <div class="flex flex-col md:mx-8 md:flex-row mt-5 gap-5 md:[&>div]:max-w-[50%]">
         <div class="outline outline-gray-300 p-4 rounded-lg">
           <div class="flex justify-between">
@@ -173,8 +205,8 @@
           <div class="flex flex-wrap gap-3 mt-6 [&>*]:outline [&>*]:outline-gray-500 [&>*]:p-2 [&>*]:rounded-md [&>*]:text-xs md:[&>*]:text-sm">
             <span>Django</span>
             <span>Javascript</span>
-            <span>Html</span>
-            <span>Css</span>
+            <span>Firebase</span>
+            <span>Celery</span>
           </div>
         </div>
         <div class="outline outline-gray-300 p-4 rounded-lg">
@@ -192,11 +224,31 @@
           <div class="flex flex-wrap gap-3 mt-6 [&>*]:outline [&>*]:outline-gray-500 [&>*]:p-2 [&>*]:rounded-md [&>*]:text-xs md:[&>*]:text-sm">
             <span>Django</span>
             <span>Javascript</span>
-            <span>Html</span>
-            <span>tailwindcss</span>
+            <span>Paystack</span>
+            <span>Tailwindcss</span>
           </div>
         </div>
       </div>
+
+      <!--electrical projects-->
+      <h3 class="mt-4 font-bold">Electrical Layouts & Analysis</h3>
+      <div class="gallery-wrap flex items-center justify-center my-5 mx-auto [&>img]:cursor-pointer">
+        <img id="backBtn" class="w-10 h-10" src="https://img.icons8.com/cotton/64/circled-left-2.png" alt="">
+        <div class="gallery">
+          <div>
+            <span><img src="images/dbanalysis.png" alt=""></span>
+            <span><img src="images/3 Bedroom Residential Apartment - Electrical Design-Layout1.png" alt=""></span>
+            <span><img src="images/dbanalysis.png" alt=""></span>
+          </div>
+          <div>
+            <span><img src="images/dbanalysis.png" alt=""></span>
+            <span><img src="images/3 Bedroom Residential Apartment - Electrical Design-Layout1.png" alt=""></span>
+            <span><img src="images/dbanalysis.png" alt=""></span>
+          </div>
+        </div>
+        <img id="nextBtn" class="w-10 h-10 rotate-z-180" src="https://img.icons8.com/cotton/64/circled-left-2.png" alt="">
+      </div>
+
     </project>
 
     <stack class="stack flex-wrap flex gap-3 mt-10 [&>div:hover]:cursor-pointer" id="">
@@ -215,6 +267,22 @@
       <div>
         <img class="w-6 h-6" src="https://img.icons8.com/ios-filled/250/html-5--v2.png" alt="html-5--v2"/>
         <span>Html</span>
+      </div>
+      <div>
+        <img class="w-6 h-6" src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/96/1A1A1A/external-redis-an-in-memory-data-structure-project-implementing-a-distributed-logo-bold-tal-revivo.png" alt="external-redis-an-in-memory-data-structure-project-implementing-a-distributed-logo-bold-tal-revivo"/>
+        <span>Redis</span>
+      </div>
+      <div>
+        <img class="w-6 h-6" src="https://img.icons8.com/external-those-icons-fill-those-icons/96/1A1A1A/external-Docker-social-media-those-icons-fill-those-icons.png" alt="docker"/>
+        <span>Docker</span>
+      </div>
+      <div>
+        <img class="w-6 h-6" src="https://img.icons8.com/material/96/git.png" alt="git"/>
+        <span>Git</span>
+      </div>
+      <div>
+        <img class="w-6 h-6" src="images/Autocad--Streamline-Simple-Icons.png"/>
+        <span>AutoCAD</span>
       </div>
     </stack>
 
@@ -240,5 +308,26 @@
   <footer class="px-12 bg-gray-200 absolute bottom-0 w-screen">
     <span class="text-sm">&copy;muhabal 2025</span>
   </footer>
+
+  <script>
+
+    let scrollContainer = document.querySelector(".gallery")
+    let backBtn = document.getElementById("backBtn")
+    let nextBtn = document.getElementById("nextBtn")
+
+    scrollContainer.addEventListener("wheel", (evt)=>{
+      evt.preventDefault();
+      scrollContainer.scrollLeft += evt.deltaY
+    })
+
+    nextBtn.addEventListener("click", ()=>{
+      scrollContainer.style.scrollBehaviour = "smooth"
+      scrollContainer.scrollLeft +=900
+    })
+
+    backBtn.addEventListener("click", ()=>{
+      scrollContainer.scrollLeft -= 900;
+    })
+  </script>
 </body>
 </html>
