@@ -106,6 +106,37 @@
       border: solid 1px ;
     }
 
+    /* Next & previous buttons */
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -50px;
+      color: rgb(255, 255, 255);
+      font-weight: bold;
+      font-size: 20px;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .prev{
+      left: 0;
+    }
+
+    .slideshow{
+      display: none;
+    }
+
     @media(max-width:47rem){
       .font1{
         font-size: 2rem;
@@ -252,32 +283,29 @@
         <img id="backBtn" class="w-10 h-10" src="https://img.icons8.com/cotton/64/circled-left-2.png" alt="">
         <div class="gallery hidden md:flex">
           <div>
-            <span><img src="images/dbanalysis.png" alt=""></span>
-            <span><img src="images/3 Bedroom Residential Apartment - Electrical Design-Layout1.png" alt=""></span>
+            <span><img onclick="currentSlide(1)" class="thumbnail" src="images/dbanalysis.png" alt=""></span>
+            <span><img onclick="currentSlide(2)" class="thumbnail" src="images/3 Bedroom Residential Apartment - Electrical Design-Layout1.png" alt=""></span>
           </div>
           <div>
-            <span><img src="images/dbanalysis.png" alt=""></span>
-            <span><img src="images/3 Bedroom Residential Apartment - Electrical Design-Layout1.png" alt=""></span>
+            <span><img onclick="currentSlide(3)" class="thumbnail" src="images/dbanalysis.png" alt=""></span>
+            <span><img onclick="currentSlide(4)" class="thumbnail" src="images/3 Bedroom Residential Apartment - Electrical Design-Layout1.png" alt=""></span>
           </div>
           <div>
-            <span><img src="images/dbanalysis.png" alt=""></span>
-            <span><img src="images/3 Bedroom Residential Apartment - Electrical Design-Layout1.png" alt=""></span>
+            <span><img onclick="currentSlide(5)" class="thumbnail" src="images/dbanalysis.png" alt=""></span>
+            <span><img onclick="currentSlide(6)" class="thumbnail" src="images/3 Bedroom Residential Apartment - Electrical Design-Layout1.png" alt=""></span>
           </div>
         </div>
 
         <div class="scroll-container mt-5 md:hidden">
-          <img src="images/dbanalysis.png" alt="">
-          <img src="images/3 Bedroom Residential Apartment - Electrical Design-Layout1.png" alt="">
-          <img src="images/dbanalysis.png" alt=""></span>
-          <img src="images/3 Bedroom Residential Apartment - Electrical Design-Layout1.png" alt="">
-          <img src="images/dbanalysis.png" alt=""></span>
-          <img src="images/3 Bedroom Residential Apartment - Electrical Design-Layout1.png" alt="">
+          <img onclick="currentSlide(1)" class="thumbnail" src="images/dbanalysis.png" alt="">
+          <img onclick="currentSlide(2)" class="thumbnail" src="images/3 Bedroom Residential Apartment - Electrical Design-Layout1.png" alt="">
+          <img onclick="currentSlide(3)" class="thumbnail" src="images/dbanalysis.png" alt=""></span>
+          <img onclick="currentSlide(4)" class="thumbnail" src="images/3 Bedroom Residential Apartment - Electrical Design-Layout1.png" alt="">
+          <img onclick="currentSlide(5)" class="thumbnail" src="images/dbanalysis.png" alt=""></span>
+          <img onclick="currentSlide(6)" class="thumbnail" src="images/3 Bedroom Residential Apartment - Electrical Design-Layout1.png" alt="">
         </div>        
         <img id="nextBtn" class="w-10 h-10 rotate-z-180" src="https://img.icons8.com/cotton/64/circled-left-2.png" alt="">
       </div>
-
-
-
     </project>
 
     <stack class="stack flex-wrap flex gap-3 mt-10 [&>div:hover]:cursor-pointer" id="">
@@ -338,7 +366,36 @@
     <span class="text-sm">&copy;muhabal 2025</span>
   </footer>
 
+  <div class="slideshow z-10 fixed left-0 top-0 h-screen w-screen bg-[#00000099] justify-center items-center [&>div]:hidden flex">
+    <div class="mySlides max-w-[90%]">
+      <img src="images/dbanalysis.png" alt="">
+    </div>
+    <div class="mySlides max-w-[90%]">
+      <img src="images/3 Bedroom Residential Apartment - Electrical Design-Layout1.png" alt="">
+    </div>
+    <div class="mySlides max-w-[90%]">
+      <img src="images/dbanalysis.png" alt="">
+    </div>
+    <div class="mySlides max-w-[90%]">
+      <img src="images/3 Bedroom Residential Apartment - Electrical Design-Layout1.png" alt="">
+    </div>
+    <div class="mySlides max-w-[90%]">
+      <img src="images/dbanalysis.png" alt="">
+    </div>
+    <div class="mySlides max-w-[90%]">
+      <img src="images/3 Bedroom Residential Apartment - Electrical Design-Layout1.png" alt="">
+    </div>
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    <img id="closeGallery" x-show="mobilenavOpen" class="w-6 h-6 select-none absolute right-8 top-8 cursor-pointer" src="https://img.icons8.com/small/64/ffffff/delete-sign.png" alt="">
+  </div>
+
   <script>
+
+    const closeGallery = document.getElementById("closeGallery")
+    closeGallery.addEventListener("click", ()=>{
+      closeGallery.parentElement.style.display = "none"
+    })
 
     let scrollContainer = document.querySelector(".gallery")
     let mbscrollContainer = document.querySelector(".scroll-container")
@@ -364,6 +421,36 @@
 
     scrollAction(scrollContainer);
     scrollAction(mbscrollContainer);
+
+    // --------------------------------
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    // next/prev controls
+    function plusSlides(n){
+      showSlides(slideIndex += n);
+    }
+
+    const slideshow = document.querySelector(".slideshow")
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+      slideshow.style.display = "flex"
+    }
+
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let thumbnails = document.getElementsByClassName("thumbnail");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+
+      slides[slideIndex-1].style.display = "block";
+    }
   </script>
 </body>
 </html>
